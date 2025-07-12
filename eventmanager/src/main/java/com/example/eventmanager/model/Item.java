@@ -1,15 +1,16 @@
 package com.example.eventmanager.model;
 
+
 import jakarta.persistence.Entity;
 import jakarta.persistence.GeneratedValue;
 import jakarta.persistence.GenerationType;
 import jakarta.persistence.Id;
-import jakarta.persistence.Table;
+
 
 @Entity
-@Table(name = "Items")
 
 public class Item {
+
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     private Long itemId;
@@ -18,6 +19,10 @@ public class Item {
     private double cost;
     private int quantity;
     private boolean alcoholic;
+
+    public Item(){
+
+    }
 
     public double getCost() {
         return cost;

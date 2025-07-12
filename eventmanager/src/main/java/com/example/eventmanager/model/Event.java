@@ -3,14 +3,15 @@ package com.example.eventmanager.model;
 import java.time.LocalDateTime;
 import java.util.List;
 
+
 import jakarta.persistence.Entity;
 import jakarta.persistence.GeneratedValue;
 import jakarta.persistence.GenerationType;
 import jakarta.persistence.Id;
-import jakarta.persistence.Table;
+import jakarta.persistence.ManyToMany;
+import jakarta.persistence.ManyToOne;
 
 @Entity
-@Table (name = "Events")
 public class Event {
 
     @Id
@@ -21,18 +22,22 @@ public class Event {
     private LocalDateTime date;
     private String location;
     private double totalSale;
+    @ManyToOne
     private Expenses expenses;
     private double profit;
+    @ManyToMany
     private List<Staff> staffMembers;
-    private Attraction attraction;
+    @ManyToMany
+    private List<Attraction> attractions;
 
-    public Attraction getAttraction() {
-        return attraction;
+    public List<Attraction> getAttraction() {
+        return attractions;
     }
 
-    public void setAttraction(Attraction attraction) {
-        this.attraction = attraction;
+    public void setAttraction(List<Attraction> attractions) {
+        this.attractions = attractions;
     }
+
     public LocalDateTime getDate() {
         return date;
     }

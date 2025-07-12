@@ -17,7 +17,7 @@ public class Receipt {
     private Long id;
 
     @ManyToOne
-    private Costumer customer;
+    private Customer customer;
 
     @OneToMany(cascade = CascadeType.ALL, fetch = FetchType.LAZY)
     private List<Sale> sales;
@@ -25,9 +25,13 @@ public class Receipt {
     public Long getId() { return id; }
     public void setId(Long id) { this.id = id; }
 
-    public Costumer getCustomer() { return customer; }
-    public void setCustomer(Costumer customer) { this.customer = customer; }
+    public Customer getCustomer() { return customer; }
+    public void setCustomer(Customer customer) { this.customer = customer; }
 
     public List<Sale> getSales() { return sales; }
     public void setSales(List<Sale> sales) { this.sales = sales; }
+
+    public Receipt(){
+
+    }
 }

@@ -1,22 +1,18 @@
 package com.example.eventmanager.model;
 
+
+
 import jakarta.persistence.Entity;
 import jakarta.persistence.GeneratedValue;
 import jakarta.persistence.GenerationType;
 import jakarta.persistence.Id;
-import jakarta.persistence.JoinColumn;
+import jakarta.persistence.ManyToMany;
 import jakarta.persistence.ManyToOne;
-import jakarta.persistence.Table;
 
-import java.time.LocalDate;
 import java.time.LocalDateTime;
 import java.util.List;
-import jakarta.persistence.OneToMany;
-import jakarta.persistence.CascadeType;
-import jakarta.persistence.FetchType;
 
 @Entity
-@Table(name = "Sales")
 public class Sale {
 
     @Id
@@ -24,13 +20,12 @@ public class Sale {
     private Long saleId;
 
     @ManyToOne
-    private Costumer customer;
+    private Customer customer;
 
-    @OneToMany(cascade = CascadeType.ALL, fetch = FetchType.LAZY)
+    @ManyToMany
     private List<SaleItem> saleItems;
 
     @ManyToOne
-    @JoinColumn(name = "staff_id")
     private Staff staff;
 
     private double totalSale;
@@ -39,11 +34,15 @@ public class Sale {
 
     private LocalDateTime timeOfSale;
 
+    public Sale(){
+
+    }
+
     public Long getSaleId() { return saleId; }
     public void setSaleId(Long saleId) { this.saleId = saleId; }
 
-    public Costumer getCustomer() { return customer; }
-    public void setCustomer(Costumer customer) { this.customer = customer; }
+    public Customer getCustomer() { return customer; }
+    public void setCustomer(Customer customer) { this.customer = customer; }
 
     public List<SaleItem> getSaleItems() { return saleItems; }
     public void setSaleItems(List<SaleItem> saleItems) { this.saleItems = saleItems; }
