@@ -19,20 +19,29 @@ public class Staff {
     private String telephone;
     private String password;
 
-    private String role; 
+    private Role role; 
 
-    public Staff() {
-    }
-
-    public Staff(Long id, String name, String email, double wage, String telephone, String password, String role) {
+    public Staff(Long id, String name, String email, double wage, String telephone, String password, Role role) {
         this.id = id;
         this.name = name;
         this.email = email;
         this.wage = wage;
         this.telephone = telephone;
-        this.password = password;
         this.role = role;
+        this.password = password;
     }
+
+    public enum Role {
+    ADMIN, MANAGER, WAITER
+}
+
+public Role getRole() {
+    return role;
+}
+
+public void setRole(Role role) {
+    this.role = role;
+}
 
     public Long getId() {
         return id;
@@ -82,11 +91,4 @@ public class Staff {
         this.password = password;
     }
 
-    public String getRole() {
-        return role;
-    }
-
-    public void setRole(String role) {
-        this.role = role;
-    }
 }
